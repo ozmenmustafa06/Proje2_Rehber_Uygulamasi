@@ -60,10 +60,18 @@ def kisiekle():
             with open("telefon_rehberi.txt", "a", encoding="utf-8") as dosya:
                 dosya.write(f"{girdi},")
                 time.sleep(1)
-                print("\nKişi başarıyla eklendi\n")
+                print("\nKişi başarıyla eklendi.\n")
                 time.sleep(1)
         except:
                 print("Dosya hatası")
+
+    secim=input("Başka işlem yapmak ister misiniz? E/H ").lower()
+
+    if secim=="e":
+        kisiekle()
+
+    elif secim=="h":
+        anamenu()
 
 def kisilistele():
     try:
@@ -94,6 +102,14 @@ def kisiara():
     except (SyntaxError, ValueError):
         print("Dosya geçerli bir Python veri yapısı içermiyor.")
 
+        secim=input("Başka işlem yapmak ister misiniz? E/H ").lower()
+
+    if secim=="e":
+        kisiara()
+
+    elif secim=="h":
+        anamenu()
+
 def kisisil():
     with open("telefon_rehberi.txt", "r", encoding="utf-8") as dosya:
         okuma_sonucu = dosya.read()
@@ -104,6 +120,14 @@ def kisisil():
         for a in cevirilen:
             if a["Ad Soyad"] != aranan_isim:
                 dosya.write(f"{str(a)},")
+
+    secim=input("Başka işlem yapmak ister misiniz? E/H ").lower()
+
+    if secim=="e":
+        kisisil()
+
+    elif secim=="h":
+        anamenu()
 
 def kisiduzenle():
     try:
@@ -134,6 +158,14 @@ def kisiduzenle():
     
     except (SyntaxError, ValueError):
         print("Dosya geçerli bir Python veri yapısı içermiyor.")
+
+    secim=input("Başka işlem yapmak ister misiniz? E/H ").lower()
+
+    if secim=="e":
+        kisiduzenle()
+
+    elif secim=="h":
+        anamenu()
 
 
 
