@@ -34,7 +34,8 @@ def anamenu():
         anamenu()
 
     elif secim=="5":
-        pass
+        kisiduzenle()
+        anamenu()
 
     elif secim=="6":
         print("Programdan 3 saniye içerisinde çıkış yapılacaktır.")
@@ -105,7 +106,34 @@ def kisisil():
                 dosya.write(f"{str(a)},")
 
 def kisiduzenle():
-    pass
+    try:
+        with open("telefon_rehberi.txt", "r", encoding="utf-8") as dosya:
+            okuma_sonucu = dosya.read()
+    except FileNotFoundError:
+        print("Dosya bulunamadı.")
+        return
+
+    aranan_isim = input("Lütfen numarasını düzenlemek istediğiniz kişinin adını giriniz: ")
+    
+    try:
+        cevirilen = ast.literal_eval(okuma_sonucu)
+        bulunan = False
+        for kisi in cevirilen:
+            if kisi["Ad Soyad"] == aranan_isim:
+                yeni_numara = input("Lütfen yeni numarayı giriniz: ")
+                kisi["Numara"] = yeni_numara
+                bulunan = True
+                break
+        
+        if bulunan:
+            with open("telefon_rehberi.txt", "w", encoding="utf-8") as dosya:
+                dosya.write(str(cevirilen))
+            print("Numara başarıyla güncellendi.")
+        else:
+            print(f"{aranan_isim} adında bir kişi bulunamadı.")
+    
+    except (SyntaxError, ValueError):
+        print("Dosya geçerli bir Python veri yapısı içermiyor.")
 
 
 
