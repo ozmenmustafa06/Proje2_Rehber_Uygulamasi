@@ -128,7 +128,7 @@ def kisisil():
 
     elif secim=="h":
         anamenu()
-
+        
 def kisiduzenle():
     try:
         with open("telefon_rehberi.txt", "r", encoding="utf-8") as dosya:
