@@ -99,14 +99,10 @@ def kisiara():
                 break
         if bulunan == 0:
             print(f"\n{aranan_isim} diye bir kayıt bulunamadı")
-            
-    except FileNotFoundError:
-        print("Dosya bulunamadı.")
-
     except (SyntaxError, ValueError):
         print("Dosya geçerli bir Python veri yapısı içermiyor.")
 
-        secim=input("Başka işlem yapmak ister misiniz? E/H ").lower()
+    secim=input("Başka işlem yapmak ister misiniz? E/H ").lower()
 
     if secim=="e":
         kisiara()
